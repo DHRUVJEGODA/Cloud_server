@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './index.css';
 import './sections.css';
+import avatarImg from './assets/hero.png';
 
 function App() {
   const words = ["Security", "Growth", "Performance"];
@@ -61,7 +62,7 @@ function App() {
           </ul>
           <div className="nav-buttons">
             <a href="#login" className="btn btn-outline">Login</a>
-            <a href="#services" className="btn btn-primary"><span className="arrow-circle">↗</span> Get Started</a>
+            <a href="#services" className="btn btn-primary"><span className="arrow-circle">↗</span>Get Started</a>
           </div>
         </nav>
       </header>
@@ -79,7 +80,7 @@ function App() {
             <p>Streamline your operations with secure cloud hosting, scalable infrastructure, advanced monitoring tools, and reliable support designed to help your business grow faster.</p>
             <div className="hero-buttons">
               <a href="#about" className="btn btn-outline-white">Learn More</a>
-              <a href="#services" className="btn btn-primary"><span className="arrow-circle">↗</span> Get Started</a>
+              <a href="#services" className="btn btn-primary"><span className="arrow-circle">↗</span>Get Started</a>
             </div>
           </div>
           <div className="hero-image-container">
@@ -137,7 +138,267 @@ function App() {
             <a href="#services" className="btn btn-outline-white about-btn">Learn More</a>
           </div>
         </section>
+
+        {/* TESTIMONIALS SECTION (moved below About) */}
+        <section id="testimonials" className="content-section testimonials-section">
+          <div className="section-heading testimonials-heading">
+            <p className="section-kicker">TESTIMONIALS</p>
+            <h2>Client Feedback and <span>Reviews</span></h2>
+          </div>
+
+          <div className="testimonials-grid">
+            <article className="testimonial-card">
+              <p className="testimonial-quote">“The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, allowing us to start operations quickly without any delays or technical issues, while providing continuous guidance and reliable support throughout the entire setup phase.”</p>
+
+              <div className="testimonial-rating">
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-empty">★</span>
+              </div>
+
+              <div className="testimonial-person">
+                <img src={avatarImg} alt="Suraj Mishra" className="testimonial-avatar-img" />
+                <div className="testimonial-meta">
+                  <strong>Suraj Mishra</strong>
+                  <span>Chemistry student</span>
+                </div>
+              </div>
+            </article>
+
+            <article className="testimonial-card">
+              <p className="testimonial-quote">“The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, making the transition seamless, efficient, and completely hassle-free for our entire organization.”</p>
+              <div className="testimonial-rating">
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-empty">★</span>
+              </div>
+              <div className="testimonial-person">
+                <img src={avatarImg} alt="Suraj Mishra" className="testimonial-avatar-img" />
+                <div className="testimonial-meta">
+                  <strong>Suraj Mishra</strong>
+                  <span>Chemistry student</span>
+                </div>
+              </div>
+            </article>
+
+            <article className="testimonial-card">
+              <p className="testimonial-quote">“The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, making the transition seamless, efficient, and completely hassle-free for our entire organization.”</p>
+              <div className="testimonial-rating">
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-empty">★</span>
+              </div>
+              <div className="testimonial-person">
+                <img src={avatarImg} alt="Suraj Mishra" className="testimonial-avatar-img" />
+                <div className="testimonial-meta">
+                  <strong>Suraj Mishra</strong>
+                  <span>Chemistry student</span>
+                </div>
+              </div>
+            </article>
+
+            <article className="testimonial-card">
+              <p className="testimonial-quote">“The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, allowing us to start operations quickly without any delays or technical issues, while providing continuous guidance and reliable support throughout the entire setup phase.”</p>
+              <div className="testimonial-rating">
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-empty">★</span>
+              </div>
+              <div className="testimonial-person">
+                <img src={avatarImg} alt="Suraj Mishra" className="testimonial-avatar-img" />
+                <div className="testimonial-meta">
+                  <strong>Suraj Mishra</strong>
+                  <span>Chemistry student</span>
+                </div>
+              </div>
+            </article>
+
+            <article className="testimonial-card">
+              <p className="testimonial-quote">“The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, making the transition seamless, efficient, and completely hassle-free for our entire organization.”</p>
+              <div className="testimonial-rating">
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-filled">★</span>
+                <span className="star star-empty">★</span>
+              </div>
+              <div className="testimonial-person">
+                <img src={avatarImg} alt="Suraj Mishra" className="testimonial-avatar-img" />
+                <div className="testimonial-meta">
+                  <strong>Suraj Mishra</strong>
+                  <span>Chemistry student</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        {/* PRICING SECTION (inserted below testimonials) */}
+        <section id="pricing" className="content-section pricing-section">
+          <div className="section-heading">
+            <p className="section-kicker">PRICING PLANS</p>
+            <h2>Choose a plan that fits your needs with scalable, secure, and<br/>high-performance <span className="text-blue">cloud solutions—no hidden costs.</span></h2>
+          </div>
+
+          <div className="pricing-grid">
+            <article className="pricing-card">
+              <div className="pricing-icon">▪</div>
+              <p className="plan-name">Basic plan</p>
+              <strong className="plan-price">$20<span className="per">/month</span></strong>
+              <p className="plan-note">Billed annually.</p>
+
+              <ul className="plan-features">
+                <li>Access to all basic features</li>
+                <li>Basic reporting and analytics</li>
+                <li>Up to 10 individual users</li>
+                <li>20GB individual data each user</li>
+                <li>Basic chat and email support</li>
+              </ul>
+
+              <a href="#start" className="btn btn-primary pricing-cta"><span className="arrow-circle">↗</span>Get Started</a>
+            </article>
+
+            <article className="pricing-card">
+              <div className="pricing-icon">▪</div>
+              <p className="plan-name">Premium plan</p>
+              <strong className="plan-price">$40<span className="per">/month</span></strong>
+              <p className="plan-note">Billed annually.</p>
+
+              <ul className="plan-features">
+                <li>Access to all basic features</li>
+                <li>Basic reporting and analytics</li>
+                <li>Up to 10 individual users</li>
+                <li>20GB individual data each user</li>
+                <li>Basic chat and email support</li>
+              </ul>
+
+              <a href="#start" className="btn btn-primary pricing-cta"><span className="arrow-circle">↗</span>Get Started</a>
+            </article>
+
+            <article className="pricing-card">
+              <div className="pricing-icon">▪</div>
+              <p className="plan-name">Advance plan</p>
+              <strong className="plan-price">$80<span className="per">/month</span></strong>
+              <p className="plan-note">Billed annually.</p>
+
+              <ul className="plan-features">
+                <li>Access to all basic features</li>
+                <li>Basic reporting and analytics</li>
+                <li>Up to 10 individual users</li>
+                <li>20GB individual data each user</li>
+                <li>Basic chat and email support</li>
+              </ul>
+
+              <a href="#start" className="btn btn-primary pricing-cta"><span className="arrow-circle">↗</span>Get Started</a>
+            </article>
+          </div>
+        </section>
+
+        {/* CONTACT / GET IN TOUCH SECTION (added at bottom) */}
+        <section id="contact" className="content-section contact-section">
+          <div className="contact-inner">
+            <div className="contact-heading">
+              <h2><span className="text-white">Get</span> <span className="text-blue">in Touch</span></h2>
+            </div>
+
+            <form className="contact-form" onSubmit={(e)=>e.preventDefault()}>
+              <div className="row two-col">
+                <label>
+                  <span className="label-text">First Name <span className="req">*</span></span>
+                  <input type="text" placeholder="Enter name" readOnly aria-readonly="true" />
+                </label>
+                <label>
+                  <span className="label-text">Last Name <span className="req">*</span></span>
+                  <input type="text" placeholder="Enter name" readOnly aria-readonly="true" />
+                </label>
+              </div>
+
+              <div className="row two-col">
+                <label>
+                  <span className="label-text">Email <span className="req">*</span></span>
+                  <input type="email" placeholder="Enter email" readOnly aria-readonly="true" />
+                </label>
+                <label>
+                  <span className="label-text">Mobile No. <span className="req">*</span></span>
+                  <input type="tel" placeholder="Enter mobile no." readOnly aria-readonly="true" />
+                </label>
+              </div>
+
+              <div className="row">
+                <label>
+                  <span className="label-text">Message <span className="req">*</span></span>
+                  <textarea placeholder="Enter message" rows={6} readOnly aria-readonly="true"></textarea>
+                </label>
+              </div>
+
+              <div className="row submit-row">
+                <button type="submit" className="btn btn-primary pricing-cta" disabled aria-disabled="true" title="Form is static"><span className="arrow-circle">↗</span> Submit Now</button>
+              </div>
+            </form>
+          </div>
+        </section>
       </main>
+      {/* FOOTER */}
+      <footer className="site-footer">
+        <div className="footer-inner">
+          <div className="footer-left">
+            <img src="/cloud_footer.png" alt="CloudServer logo" className="footer-logo" />
+            <p className="footer-desc">We specialize in delivering secure, scalable, and high-performance cloud solutions tailored to modern business needs. From reliable hosting and data storage to advanced cybersecurity and DevOps, our services are designed to simplify operations and support long-term growth.</p>
+          </div>
+
+          <div className="footer-col">
+            <h4>Quick Links</h4>
+            <ul className="footer-links">
+              <li><a href="#services">Service</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>Contact</h4>
+            <p className="contact-line">📞 +1 222-222-2222</p>
+            <p className="contact-line">✉ cloudserver@gmail.com</p>
+          </div>
+
+          <div className="footer-col">
+            <h4>Get Started</h4>
+            <ul className="footer-links">
+              <li><a href="#login">Login</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#contact">Talk to Us</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          <div className="footer-bottom-left">
+            <p>Copyright & Terms © 2025 Cloudserver. All Rights Reserved.</p>
+          </div>
+
+          <div className="footer-bottom-center">
+            <a href="#">Terms of Use</a>
+            <span className="sep">|</span>
+            <a href="#">Privacy Policy</a>
+          </div>
+
+          <div className="footer-bottom-right">
+            <div className="social-icons">
+              <a href="#" aria-label="LinkedIn">in</a>
+              <a href="#" aria-label="Twitter">t</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </>
   );
 }
