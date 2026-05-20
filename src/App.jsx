@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './index.css';
 import './sections.css';
 import avatarImg from './assets/hero.png';
+import HeroIllustration from './HeroIllustration';
 
 function App() {
   const words = ["Security", "Growth", "Performance"];
@@ -187,12 +188,11 @@ function App() {
           </div>
 
           <div className="hero-image-container">
-            <img
-              src="/cloud_illustration.png"
-              alt="Isometric Cloud Server Illustration"
-              className="floating-img"
-              id="hero-illustration"
+            <HeroIllustration
               style={{
+                width: '560px',
+                maxWidth: '100%',
+                height: '480px',
                 transform: `translate(${mousePos.x}px, ${mousePos.y}px)`,
                 transition: mousePos.x === 0 && mousePos.y === 0 ? 'transform 0.5s ease' : 'none'
               }}
