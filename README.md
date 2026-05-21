@@ -1,16 +1,29 @@
-# React + Vite
+# CloudServer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+CloudServer is a single-page React landing site for cloud hosting services. It features a polished hero section, service highlights, pricing, testimonials, contact, and footer content built with Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Component-based React layout
+- Hero illustration with animated entrance effects
+- Responsive sections for services, about, testimonials, pricing, and contact
+- Static CTA buttons and a floating restart control
 
-## React Compiler
+## Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+## Build
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+```
+
+## Preview
+
+```bash
+npm run preview
+```

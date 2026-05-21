@@ -25,20 +25,19 @@ const ILLUS_CSS = `
   }
 
   /* ── ENTRY keyframes ── */
-  @keyframes hiFromRight { from { opacity:0; transform:translateX(60px);            } to { opacity:1; transform:translateX(0);          } }
-  @keyframes hiFromBL    { from { opacity:0; transform:translate(-45px,45px);       } to { opacity:1; transform:translate(0,0);         } }
+  @keyframes hiFromRight { from { opacity:0; transform:translateX(110px);           } to { opacity:1; transform:translateX(0);          } }
+  @keyframes hiFromBottom{ from { opacity:0; transform:translateY(45px);            } to { opacity:1; transform:translateY(0);          } }
   @keyframes hiFromTR    { from { opacity:0; transform:translate(45px,-45px);       } to { opacity:1; transform:translate(0,0);         } }
+  @keyframes hiFromTop   { from { opacity:0; transform:translateY(-45px);           } to { opacity:1; transform:translateY(0);          } }
 
   /* Entry animation classes */
-  .hi-entry-right { animation: hiFromRight 0.65s cubic-bezier(0.34,1.2,0.64,1) both; }
-  .hi-entry-bl    { animation: hiFromBL    0.65s cubic-bezier(0.34,1.2,0.64,1) both; }
-  .hi-entry-tr    { animation: hiFromTR    0.65s cubic-bezier(0.34,1.2,0.64,1) both; }
+  .hi-entry-right { animation: hiFromRight 0.95s cubic-bezier(0.22,1,0.36,1) both; }
+  .hi-entry-bottom{ animation: hiFromBottom 0.95s cubic-bezier(0.22,1,0.36,1) both; }
+  .hi-entry-tr    { animation: hiFromTR    0.95s cubic-bezier(0.22,1,0.36,1) both; }
+  .hi-entry-top   { animation: hiFromTop   0.95s cubic-bezier(0.22,1,0.36,1) both; }
 
-  /* Stagger delays */
-  .hi-d1 { animation-delay: 0.10s; }
-  .hi-d2 { animation-delay: 0.22s; }
-  .hi-d3 { animation-delay: 0.34s; }
-  .hi-d4 { animation-delay: 0.46s; }
+  /* Shared delay so the whole cluster appears together */
+  .hi-sync { animation-delay: 0.22s; }
 
 `;
 
@@ -133,7 +132,7 @@ export default function HeroIllustration({ style, className }) {
         <>
 
           {/* ── RIGHT SERVER CUBE ── */}
-          <div className="hi-elem hi-entry-right hi-d2" style={{ top: '38%', right: '-10%' }}>
+          <div className="hi-elem hi-entry-right hi-sync" style={{ top: '38%', right: '-10%' }}>
             <img
               src="/server_cube.png"
               alt="Server"
@@ -143,7 +142,7 @@ export default function HeroIllustration({ style, className }) {
           </div>
 
           {/* ── BOTTOM-LEFT SERVER STACK ── */}
-          <div className="hi-elem hi-entry-bl hi-d3" style={{ bottom: '2%', left: '-8%' }}>
+          <div className="hi-elem hi-entry-bottom hi-sync" style={{ bottom: '2%', left: '-8%' }}>
             <img
               src="/box1-removebg-preview.png"
               alt="Server Stack"
@@ -153,7 +152,7 @@ export default function HeroIllustration({ style, className }) {
           </div>
 
           {/* ── BOTTOM-LEFT CLOUD ── */}
-          <div className="hi-elem hi-entry-bl hi-d1" style={{ bottom: '-20%', left: '18%' }}>
+          <div className="hi-elem hi-entry-bottom hi-sync" style={{ bottom: '-17%', left: '24%' }}>
             <img
               src="/box3-removebg-preview.png"
               alt="Cloud"
@@ -162,8 +161,28 @@ export default function HeroIllustration({ style, className }) {
             />
           </div>
 
+          {/* ── WINDOWS LOGO ── */}
+          <div className="hi-elem hi-entry-bottom hi-sync" style={{ left: '18%', bottom: '-15%' }}>
+            <img
+              src="/windows_logo.png"
+              alt="Windows Logo"
+              width="40"
+              style={{ filter: 'drop-shadow(0 4px 10px rgba(255,255,255,0.22))' }}
+            />
+          </div>
+
+          {/* ── OVAL RINGS ── */}
+          <div className="hi-elem hi-entry-bottom hi-sync" style={{ left: '70%', bottom: '-7%' }}>
+            <img
+              src="/oval_rings.png"
+              alt="Oval Rings"
+              width="67"
+              style={{ filter: 'drop-shadow(0 4px 10px rgba(255,255,255,0.18))' }}
+            />
+          </div>
+
           {/* ── TOP-RIGHT SMALL CLOUD ── */}
-          <div className="hi-elem hi-entry-tr hi-d4" style={{ top: '2%', right: '5%' }}>
+          <div className="hi-elem hi-entry-top hi-sync" style={{ top: '2%', right: '5%' }}>
             <img
               src="/box3-removebg-preview.png"
               alt="Server"

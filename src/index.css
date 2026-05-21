@@ -1044,3 +1044,143 @@ header {
     .footer-logo { width: 150px; }
     .footer-bottom { flex-direction: column; gap: 0.7rem; align-items: flex-start; padding: 1rem 2rem; }
 }
+
+
+/* ========================
+   EXACT NAVBAR DESIGN OVERRIDES (FIXED ARROW & MASSIVE LOGO)
+   ======================== */
+.site-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 6% !important; /* Extra padding room to elegantly balance the massive logo scale */
+    
+    /* Solid background theme matching the main body */
+    background: #060b16 !important; 
+    opacity: 1 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    
+    /* Total removal of dividing background lines or shadows */
+    border: none !important;
+    border-bottom: 0 !important;
+    box-shadow: none !important;
+}
+
+/* LOGO SIZE INCREASE */
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.navbar-logo-image {
+    display: block;
+    height: 64px !important; /* Increased from 54px to make the logo significantly larger and prominent */
+    width: auto !important;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* NAV LINKS TYPOGRAPHY */
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem !important;
+}
+
+.nav-links a {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 0.88rem !important;
+    font-weight: 400 !important;
+    opacity: 0.85 !important; 
+    letter-spacing: 0.02em;
+    transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover {
+    opacity: 1 !important;
+}
+
+/* ACTION BUTTONS CONFIGURATION */
+.nav-buttons {
+    display: flex;
+    gap: 0.9rem !important;
+    align-items: center;
+}
+
+/* Slim Rectangular Login Button */
+.btn-nav-login {
+    background: transparent;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.55rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 4px !important; 
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.btn-nav-login:hover {
+    border-color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* Slim Rectangular Get Started Button */
+.btn-nav-primary {
+    background: #2563eb !important; 
+    color: #ffffff !important;
+    border: none !important;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.55rem 1.4rem; 
+    border-radius: 4px !important; 
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    cursor: pointer;
+    box-shadow: none !important; 
+    transition: background-color 0.2s ease;
+    line-height: 1;
+}
+
+.btn-nav-primary:hover {
+    background: #1d4ed8 !important;
+}
+
+/* EXACT FIXED ARROW STRUCTURE: Target arrow-circle wrapper directly inside navigation buttons */
+.btn-nav-primary .arrow-circle {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 19px !important;
+    height: 19px !important;
+    background-color: #ffffff !important;
+    color: #2563eb !important;
+    border-radius: 50% !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    transform: none !important; /* Erases any inherited button hover transforms from global stylesheets */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-nav-primary:hover .arrow-circle {
+    background-color: #1d4ed8 !important;
+    color: #ffffff !important;
+}

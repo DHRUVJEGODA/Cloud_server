@@ -48,7 +48,7 @@ section {
 }
 
 /* ========================
-   SERVICES SECTION
+   SERVICES SECTION (INTERNAL BOUNDARIES ONLY & FORCE HOVER)
    ======================== */
 .services-section {
     position: relative;
@@ -60,96 +60,149 @@ section {
 .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
-    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 0 !important; 
+    margin-top: 2rem;
+    
+    /* NO EXTERNAL BOUNDARY: Outer container wrapper has completely naked edges */
+    border: none !important;
 }
 
 .service-card {
-    background: rgba(6, 11, 22, 0.72);
-    padding: 2.8rem 2.2rem;
-    border-right: 1px solid rgba(255, 255, 255, 0.05);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: background 0.35s ease, border-color 0.35s ease;
-    cursor: pointer;
+    background: transparent !important; 
+    padding: 3rem 2.5rem;
     position: relative;
-    overflow: hidden;
+    overflow: hidden !important; 
+    z-index: 1;
+    cursor: pointer;
+    
+    /* Reset all base card borders to avoid inherited conflicts */
+    border: none !important;
 }
 
-.service-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background:
-        linear-gradient(180deg, rgba(8, 13, 30, 0.96) 0%, rgba(14, 32, 90, 0.98) 55%, rgba(25, 71, 195, 0.98) 100%),
-        radial-gradient(circle at 50% 40%, rgba(64, 132, 255, 0.18), transparent 50%);
-    opacity: 0;
-    transition: opacity 0.35s ease;
-    pointer-events: none;
-    z-index: 0;
+/* ══════════════════════════════════════════
+   EXACT INTERNAL SOLID BOUNDARY LINES
+   ══════════════════════════════════════════ */
+
+/* Vertical Internal Lines: Add a right border to cards 1, 2, 4, and 5 (keeps columns 3 and 6 outline-free) */
+.services-grid .service-card:nth-child(1),
+.services-grid .service-card:nth-child(2),
+.services-grid .service-card:nth-child(4),
+.services-grid .service-card:nth-child(5) {
+    border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-.service-card:hover {
-    background: rgba(6, 11, 22, 0.72);
-    border-right-color: rgba(255, 255, 255, 0.05);
-    border-bottom-color: rgba(255, 255, 255, 0.05);
+/* Horizontal Internal Lines: Add a bottom border only to the top row (cards 1, 2, and 3) */
+.services-grid .service-card:nth-child(-n+3) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ══════════════════════════════════════════
+   FORCE HOVER DUAL DIRECTION GRADIENTS
+   ══════════════════════════════════════════ */
+
+/* Master overlay anchor setup */
+.services-grid .service-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    opacity: 0 !important;
+    /* Smooth transition handler */
+    transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    z-index: -1 !important; 
+}
+
+/* TOP ROW CARDS (1, 2, and 3): Glowing brighter upwards from the central horizontal line */
+.services-grid .service-card:nth-child(-n+3)::before {
+    background: linear-gradient(
+        0deg, 
+        rgba(37, 99, 235, 0.6) 0%, 
+        rgba(37, 99, 235, 0.35) 15%, 
+        rgba(14, 32, 90, 0.7) 60%, 
+        rgba(6, 11, 22, 0) 100%
+    ) !important;
+}
+
+/* BOTTOM ROW CARDS (4, 5, and 6): Glowing brighter downwards from the central horizontal line */
+.services-grid .service-card:nth-child(n+4)::before {
+    background: linear-gradient(
+        180deg, 
+        rgba(37, 99, 235, 0.6) 0%, 
+        rgba(37, 99, 235, 0.35) 15%, 
+        rgba(14, 32, 90, 0.7) 60%, 
+        rgba(6, 11, 22, 0) 100%
+    ) !important;
+}
+
+/* Force state layer opacity shift on hover layout action */
+.services-grid .service-card:hover::before {
+    opacity: 1 !important;
+}
+
+/* ══════════════════════════════════════════ */
+
+/* Keep copy readable over backgrounds */
+.service-card > * {
+    position: relative;
     z-index: 2;
 }
 
-.service-card:hover::before {
-    opacity: 1;
-}
-
-.services-grid .service-card:nth-child(n + 4):hover::before {
-    background:
-        linear-gradient(180deg, rgba(25, 71, 195, 0.98) 0%, rgba(14, 32, 90, 0.98) 45%, rgba(8, 13, 30, 0.96) 100%),
-        radial-gradient(circle at 50% 60%, rgba(64, 132, 255, 0.18), transparent 50%);
-}
-
-.service-card > * {
-    position: relative;
-    z-index: 1;
-}
-
-/* Service icon badge — blue rounded square */
+/* Flat brand icon styles */
 .service-icon-badge {
-    width: 56px;
-    height: 56px;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.9), rgba(29, 78, 216, 0.85));
-    border-radius: 12px;
-    display: flex;
+    color: #2563eb;
+    font-size: 1.6rem;
+    margin-bottom: 1.2rem;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: #ffffff;
-    font-size: 1.4rem;
-    margin-bottom: 1.4rem;
-    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
-}
-
-.service-card:hover .service-icon-badge {
-    transform: none;
-    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 .service-card h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.65rem;
-    font-weight: 600;
-    color: var(--text-main);
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    color: #ffffff !important;
+    margin-bottom: 0.8rem !important;
 }
 
 .service-card p {
-    color: var(--text-muted);
-    font-size: 0.84rem;
-    line-height: 1.65;
+    color: #8b9ab5 !important;
+    font-size: 0.88rem !important;
+    line-height: 1.6 !important;
 }
 
-.services-grid:hover .service-card:not(:hover) {
-    opacity: 0.92;
+/* TABLET AND MOBILE SAFETY ADAPTATIONS */
+@media (max-width: 1100px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    /* Reset borders dynamically if columns change on small screens */
+    .services-grid .service-card {
+        border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .services-grid .service-card:nth-child(2n) {
+        border-right: none !important;
+    }
+    .services-grid .service-card:nth-last-child(-n+2) {
+        border-bottom: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    .services-grid .service-card {
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+    .services-grid .service-card:last-child {
+        border-bottom: none !important;
+    }
 }
 
 /* ========================
@@ -358,4 +411,30 @@ section {
 
 @media (max-width: 999px) {
     .testimonial-card { flex: 0 0 88%; max-width: 88%; }
+}
+
+/* ========================
+   PRICING SECTION MEDIA QUERIES (OVERRIDE)
+   ======================== */
+@media (max-width: 1150px) and (min-width: 769px) {
+    /* Tablet View: Shift gracefully from 3 columns to a neat 2+1 centering grid layout */
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 20px !important;
+    }
+    .pricing-grid .pricing-card:last-child {
+        grid-column: span 2 !important;
+        max-width: calc(50% - 10px) !important;
+        margin: 0 auto !important;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile View: Safe single column stack layout */
+    .pricing-grid { 
+        grid-template-columns: 1fr !important; 
+        max-width: 460px !important; 
+        margin: 0 auto !important; 
+    }
 }

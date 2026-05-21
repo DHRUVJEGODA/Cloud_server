@@ -1,58 +1,52 @@
 import { useEffect, useRef, useState } from 'react';
 import avatarImg from '../assets/hero.png';
 
-export default function Testimonials() {
-  const testimonials = [
-    {
-      quote: '"The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, allowing us to start operations quickly without any delays or technical issues, while providing continuous guidance and reliable support throughout the entire setup phase."',
-      rating: 4, name: 'Suraj Mishra', role: 'Chemistry student',
-    },
-    {
-      quote: '"The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, making the transition seamless, efficient, and completely hassle-free for our entire organization."',
-      rating: 4, name: 'Suraj Mishra', role: 'Chemistry student',
-    },
-    {
-      quote: '"The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, making the transition seamless, efficient, and completely hassle-free for our entire organization."',
-      rating: 4, name: 'Suraj Mishra', role: 'Chemistry student',
-    },
-    {
-      quote: '"The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, allowing us to start operations quickly without any delays or technical issues, while providing continuous guidance and reliable support throughout the entire setup phase."',
-      rating: 4, name: 'Suraj Mishra', role: 'Chemistry student',
-    },
-    {
-      quote: '"Fast, reliable, and the team is very supportive — helped us scale without downtime."',
-      rating: 5, name: 'Anita Roy', role: 'Product Manager',
-    },
-    {
-      quote: '"Excellent performance and monitoring — our incidents reduced drastically."',
-      rating: 5, name: 'Rahul Verma', role: 'Ops Lead',
-    },
-    {
-      quote: '"Great onboarding and continuous support — highly recommend their services."',
-      rating: 4, name: 'Priya Singh', role: 'CTO',
-    },
-    {
-      quote: '"Smooth migrations and excellent uptime. Support team is responsive and skilled."',
-      rating: 5, name: 'Karan Patel', role: 'Engineering Manager',
-    },
-    {
-      quote: '"Affordable plans with enterprise-level features — perfect for growing startups."',
-      rating: 4, name: 'Meera Iyer', role: 'Founder',
-    },
-    {
-      quote: '"The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, allowing us to start operations quickly without any delays."',
-      rating: 4, name: 'Suraj Mishra', role: 'Chemistry student',
-    },
-    {
-      quote: '"Highly skilled team, helped us build a robust CI/CD pipeline and improved deployment frequency."',
-      rating: 5, name: 'Anmol Gupta', role: 'DevOps Engineer',
-    },
-    {
-      quote: '"Their security audits prevented serious vulnerabilities — excellent expertise and process."',
-      rating: 5, name: 'Sana Khan', role: 'Security Analyst',
-    },
-  ];
+const TESTIMONIALS_DATA = [
+  {
+    id: 't1',
+    quote: '"The onboarding process was smooth, and their team ensured everything was set up perfectly from day one, allowing us to start operations quickly without any delays or technical issues."',
+    rating: 5, 
+    name: 'Suraj Mishra', 
+    role: 'DevOps Lead',
+  },
+  {
+    id: 't2',
+    quote: '"Fast, reliable, and the team is very supportive — helped us scale our cloud architecture without a single minute of downtime during migration."',
+    rating: 5, 
+    name: 'Anita Roy', 
+    role: 'Product Manager',
+  },
+  {
+    id: 't3',
+    quote: '"Excellent performance and monitoring metrics — our system incidents reduced drastically within the first week of deployment."',
+    rating: 5, 
+    name: 'Rahul Verma', 
+    role: 'Infrastructure Architect',
+  },
+  {
+    id: 't4',
+    quote: '"Great onboarding experience and continuous security updates. I highly recommend their enterprise services for growing tech platforms."',
+    rating: 4, 
+    name: 'Priya Singh', 
+    role: 'CTO',
+  },
+  {
+    id: 't5',
+    quote: '"Smooth migrations and excellent container engine performance. Their support team is highly responsive, deeply skilled, and available 24/7."',
+    rating: 5, 
+    name: 'Karan Patel', 
+    role: 'Engineering Manager',
+  },
+  {
+    id: 't6',
+    quote: '"Affordable tiers with enterprise-level capabilities — absolutely ideal for fast-growing startups needing high security buffers."',
+    rating: 4, 
+    name: 'Meera Iyer', 
+    role: 'Founder',
+  }
+];
 
+export default function Testimonials() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const trackRef = useRef(null);
   const viewportRef = useRef(null);
@@ -75,19 +69,30 @@ export default function Testimonials() {
     return () => window.removeEventListener('resize', onResize);
   }, []);
 
+  // Sliding Interval logic
   useEffect(() => {
-    const maxIndex = Math.max(0, testimonials.length - visibleCount);
+    const maxIndex = Math.max(0, TESTIMONIALS_DATA.length - visibleCount);
     const iv = setInterval(() => {
       setCurrentTestimonial((s) => (s >= maxIndex ? 0 : s + 1));
     }, 5000);
     return () => clearInterval(iv);
-  }, [testimonials.length, visibleCount]);
+  }, [visibleCount]);
 
+  // FIXED SCROLL LOGIC: Bounding calculation by card slide width
   useEffect(() => {
     if (!viewportRef.current || !trackRef.current) return;
+    
     const card = trackRef.current.children[currentTestimonial];
     if (!card) return;
-    viewportRef.current.scrollTo({ left: card.offsetLeft, behavior: 'smooth' });
+
+    // Calculate exact scrolling position within the container coordinate plane
+    // const containerPadding = parseFloat(window.getComputedStyle(trackRef.current).gap) || 0;
+    const targetScrollLeft = card.offsetLeft - trackRef.current.offsetLeft;
+
+    viewportRef.current.scrollTo({ 
+      left: targetScrollLeft, 
+      behavior: 'smooth' 
+    });
   }, [currentTestimonial]);
 
   return (
@@ -100,8 +105,8 @@ export default function Testimonials() {
       <div className="testimonials-slider-wrapper">
         <div className="testimonials-viewport" ref={viewportRef}>
           <div className="testimonials-track" ref={trackRef}>
-            {testimonials.map((t, idx) => (
-              <article className="testimonial-card" key={idx}>
+            {TESTIMONIALS_DATA.map((t) => (
+              <article className="testimonial-card" key={t.id}>
                 <p className="testimonial-quote">{t.quote}</p>
 
                 <div className="testimonial-rating">
