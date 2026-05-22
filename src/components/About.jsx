@@ -6,7 +6,6 @@ export default function About() {
           <img
             src="/about_collage.png"
             alt="Cloud Technology Collage"
-            className="float-anim"
             style={{
               maxWidth: '100%',
               maxHeight: '100%',

@@ -1,21 +1,27 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import HeroIllustration from '../HeroIllustration';
 
-const words = ["Security", "Growth", "Performance"];
+const words = ["Performance", "Security", "Growth"];
 
 export default function Hero() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [fadeClass, setFadeClass] = useState('fade-in');
+  const [wordClass, setWordClass] = useState('scroll-in');
+  const timeoutRef = useRef(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setFadeClass('fade-out');
-      setTimeout(() => {
+      setWordClass('scroll-out');
+      timeoutRef.current = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % words.length);
-        setFadeClass('fade-in');
-      }, 300);
-    }, 2000);
-    return () => clearInterval(interval);
+        setWordClass('scroll-in');
+      }, 240);
+    }, 1800);
+    return () => {
+      clearInterval(interval);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -23,7 +29,7 @@ export default function Hero() {
       <div className="hero-content">
         <h1>
           Enhance Your Cloud<br />Infrastructure for<br />
-          Greater <span className={`animated-text ${fadeClass}`}>{words[currentIndex]}</span>
+          Greater <span className={`animated-text ${wordClass}`}>{words[currentIndex]}</span>
         </h1>
         <p>
           Streamline your operations with secure cloud hosting, scalable infrastructure,
@@ -41,9 +47,9 @@ export default function Hero() {
       <div className="hero-image-container">
         <HeroIllustration
           style={{
-            width: '560px',
-            maxWidth: '100%',
-            height: '480px'
+            width: '100%',
+            maxWidth: '513.32px',
+            height: '100%'
           }}
         />
       </div>

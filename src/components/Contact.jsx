@@ -131,8 +131,7 @@ export default function Contact() {
             <div className="submit-row" style={{ display: 'flex', justifyContent: 'center', marginTop: '1.8rem' }}>
               <button
                 type="submit"
-                className="btn btn-primary"
-                style={{ width: 'auto', padding: '0.6rem 1.8rem 0.6rem 0.65rem', cursor: 'pointer' }}
+                className="btn btn-primary btn-nav-primary submit-btn"
               >
                 <span className="arrow-circle">↗</span> Submit Now
               </button>

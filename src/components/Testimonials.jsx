@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react';
 import avatarImg from '../assets/hero.png';
 
 const TESTIMONIALS_DATA = [
@@ -47,54 +46,6 @@ const TESTIMONIALS_DATA = [
 ];
 
 export default function Testimonials() {
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-  const trackRef = useRef(null);
-  const viewportRef = useRef(null);
-
-  const [visibleCount, setVisibleCount] = useState(() => {
-    if (typeof window !== 'undefined') {
-      if (window.innerWidth >= 1400) return 5;
-      if (window.innerWidth >= 1000) return 3;
-    }
-    return 1;
-  });
-
-  useEffect(() => {
-    const onResize = () => {
-      if (window.innerWidth >= 1400) setVisibleCount(5);
-      else if (window.innerWidth >= 1000) setVisibleCount(3);
-      else setVisibleCount(1);
-    };
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-
-  // Sliding Interval logic
-  useEffect(() => {
-    const maxIndex = Math.max(0, TESTIMONIALS_DATA.length - visibleCount);
-    const iv = setInterval(() => {
-      setCurrentTestimonial((s) => (s >= maxIndex ? 0 : s + 1));
-    }, 5000);
-    return () => clearInterval(iv);
-  }, [visibleCount]);
-
-  // FIXED SCROLL LOGIC: Bounding calculation by card slide width
-  useEffect(() => {
-    if (!viewportRef.current || !trackRef.current) return;
-    
-    const card = trackRef.current.children[currentTestimonial];
-    if (!card) return;
-
-    // Calculate exact scrolling position within the container coordinate plane
-    // const containerPadding = parseFloat(window.getComputedStyle(trackRef.current).gap) || 0;
-    const targetScrollLeft = card.offsetLeft - trackRef.current.offsetLeft;
-
-    viewportRef.current.scrollTo({ 
-      left: targetScrollLeft, 
-      behavior: 'smooth' 
-    });
-  }, [currentTestimonial]);
-
   return (
     <section id="testimonials" className="content-section testimonials-section">
       <div className="section-heading testimonials-heading">
@@ -103,8 +54,8 @@ export default function Testimonials() {
       </div>
 
       <div className="testimonials-slider-wrapper">
-        <div className="testimonials-viewport" ref={viewportRef}>
-          <div className="testimonials-track" ref={trackRef}>
+        <div className="testimonials-viewport">
+          <div className="testimonials-track">
             {TESTIMONIALS_DATA.map((t) => (
               <article className="testimonial-card" key={t.id}>
                 <p className="testimonial-quote">{t.quote}</p>

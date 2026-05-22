@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './index.css';
 import './sections.css';
 
@@ -12,11 +13,22 @@ import Footer from './components/Footer';
 import ScrollToTopButton from './components/ScrollToTopButton';
 
 function App() {
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual';
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+
+    const handlePageShow = (event) => {
+      if (event.persisted) {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      }
+    };
+
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
+
   return (
     <>
-      <div className="glow-circle glow-1"></div>
-      <div className="glow-circle glow-2"></div>
-
       <Navbar />
 
       <main>

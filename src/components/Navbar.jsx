@@ -19,8 +19,8 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-buttons">
-          <a href="#login" className="btn-nav-login">Login</a>
-          <button type="button" className="btn-nav-primary" aria-label="Get Started">
+          <a href="#login" className="btn btn-outline btn-nav-login">Login</a>
+          <button type="button" className="btn btn-primary btn-nav-primary" aria-label="Get Started">
             <span className="arrow-circle">↗</span>Get Started
           </button>
         </div>

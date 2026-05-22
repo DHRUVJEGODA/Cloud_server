@@ -1,6 +1,8 @@
 export default function ScrollToTopButton() {
   const handleClick = () => {
-    window.dispatchEvent(new Event('cloudserver:restart'));
+    const freshUrl = new URL(window.location.href);
+    freshUrl.searchParams.set('reload', Date.now().toString());
+    window.location.replace(freshUrl.toString());
   };
 
   return (
@@ -8,8 +10,8 @@ export default function ScrollToTopButton() {
       type="button"
       className="restart-fab"
       onClick={handleClick}
-      aria-label="Restart animation"
-      title="Restart"
+      aria-label="Reload site"
+      title="Reload"
     >
       <span className="restart-fab-icon">
         <i className="fa-solid fa-rotate-left"></i>
